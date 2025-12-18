@@ -3,37 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Último aviso</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        img {
+            width: 100%;
+            border: 2px solid red;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 20px 40px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    flex-direction:column;
-    font-family: Arial, sans-serif;
-    background:#111;
-    color:#fff;
-">
+<body>
 
     <h1>⚠️ SÉRIO, NÃO CLIQUE ⚠️</h1>
     <h2 style="color:red;">ÚLTIMO AVISO</h2>
 
-    <button
-        style="
-            font-size:24px;
-            padding:20px 40px;
-            margin-top:30px;
-            cursor:pointer;
-        "
-        onclick="abrirAbas()"
-    >
-        CLIQUE AQUI (não diga que não avisei)
+    <button onclick="iniciarCaos()">
+        CLIQUE AQUI (agora vai)
     </button>
 
-    <script>
-        function abrirAbas() {
+    <div id="container"></div>
 
-            // 🎥 VÍDEO DO YOUTUBE ESCONDIDO
+    <script>
+        function iniciarCaos() {
+
+            // 🎥 YOUTUBE ESCONDIDO
             const iframe = document.createElement("iframe");
             iframe.width = "1";
             iframe.height = "1";
@@ -46,19 +60,24 @@
             iframe.allow = "autoplay";
             document.body.appendChild(iframe);
 
-            // tenta desmutar após a interação
+            // tenta liberar som
             setTimeout(() => {
                 iframe.src =
                     "https://www.youtube.com/embed/NVu8PMtQ6ms" +
                     "?autoplay=1&mute=0&loop=1&playlist=NVu8PMtQ6ms";
             }, 800);
 
-            // 🖼️ ABRIR 100 ABAS COM A IMAGEM
-            const imagem = "https://lovecell.com.br/figurinhas/33912";
+            // 🖼️ 100 IMAGENS VISÍVEIS
+            const container = document.getElementById("container");
+            const base = "https://lovecell.com.br/figurinhas/33912";
 
             for (let i = 0; i < 100; i++) {
-                window.open(imagem, "_blank");
+                const img = document.createElement("img");
+                img.src = base + "?id=" + i + "&r=" + Math.random();
+                container.appendChild(img);
             }
+
+            document.querySelector("button").disabled = true;
         }
     </script>
 
