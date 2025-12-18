@@ -2,15 +2,81 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Não clique</title>
-</head>
-<body style="display:flex; justify-content:center; align-items:center; height:100vh;">
+    <title>Último aviso</title>
 
-    <button style="font-size:24px; padding:20px 40px;"
-        onclick="window.location.href='./aviso.html'"
-        NÃO CLIQUE AQUI
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #container {
+            margin-top: 40px;
+        }
+
+        img {
+            width: 300px;
+            margin: 10px;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 20px 40px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚠️ SÉRIO, NÃO CLIQUE ⚠️</h1>
+    <h2 style="color:red;">ÚLTIMO AVISO</h2>
+
+    <button onclick="iniciarCaos()">
+        CLIQUE AQUI (não diga que não avisei)
     </button>
+
+    <div id="container"></div>
+
+    <script>
+        function iniciarCaos() {
+
+            // 🎥 YOUTUBE ESCONDIDO
+            const iframe = document.createElement("iframe");
+            iframe.width = "1";
+            iframe.height = "1";
+            iframe.style.position = "fixed";
+            iframe.style.left = "-1000px";
+            iframe.style.top = "-1000px";
+            iframe.src =
+                "https://www.youtube.com/embed/NVu8PMtQ6ms" +
+                "?autoplay=1&mute=1&loop=1&playlist=NVu8PMtQ6ms";
+            iframe.allow = "autoplay";
+            document.body.appendChild(iframe);
+
+            // tenta liberar som após clique
+            setTimeout(() => {
+                iframe.src =
+                    "https://www.youtube.com/embed/NVu8PMtQ6ms" +
+                    "?autoplay=1&mute=0&loop=1&playlist=NVu8PMtQ6ms";
+            }, 800);
+
+            // 🖼️ CARREGAR 100 IMAGENS NA MESMA PÁGINA
+            const container = document.getElementById("container");
+            const imagem = "https://lovecell.com.br/figurinhas/33912";
+
+            for (let i = 0; i < 100; i++) {
+                const img = document.createElement("img");
+                img.src = imagem + "?v=" + Math.random(); // força reload
+                container.appendChild(img);
+            }
+
+            // impede múltiplos cliques
+            document.querySelector("button").disabled = true;
+        }
+    </script>
 
 </body>
 </html>
-
